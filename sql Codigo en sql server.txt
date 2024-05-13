@@ -1,0 +1,38 @@
+sql Codigo en sql server
+-- Creación de la tabla Autores
+CREATE TABLE Autores (
+    Cedula_autor INT PRIMARY KEY,
+    Nombre_autor VARCHAR(50) NOT NULL,
+    Genero_autor CHAR(1) CHECK (Genero_autor IN ('F', 'M')),
+    Edad INT,
+    Fecha_nacimiento DATE
+);
+
+-- Creación de la tabla Obras
+CREATE TABLE Obras (
+    ID INT PRIMARY KEY IDENTITY,
+    Titulo VARCHAR(100) NOT NULL,
+    Fecha_creacion DATE NOT NULL,
+    Fecha_agregado DATETIME DEFAULT GETDATE(),
+    Autor_id INT,
+    Publica BIT,
+    Texto NVARCHAR(MAX),
+    FOREIGN KEY (Autor_id) REFERENCES Autores(Cedula_autor)
+);
+
+-- Población inicial de la tabla Autores
+INSERT INTO Autores (Cedula_autor, Nombre_autor, Genero_autor, Edad, Fecha_nacimiento)
+VALUES 
+    (2658445, 'Lorena Cantor', 'F', 25, '1999-05-12'),
+    (2116548, 'Tatiana Pérez', 'F', 30, '1994-10-20'),
+    (3669755, 'Juan López', 'M', 25, '1999-08-31'),
+    (3965874, 'Carlos Moreno', 'M', 20, '2004-02-15');
+
+-- Población inicial de la tabla Obras
+INSERT INTO Obras (Titulo, Fecha_creacion, Autor_id, Publica, Texto)
+VALUES 
+    ('Obra 1', '2023-01-15', 2658445, 1, 'Texto de la obra 1'),
+    ('Obra 2', '2022-11-30', 2116548, 0, 'Texto de la obra 2'),
+    ('Obra 3', '2023-05-20', 3669755, 1, 'Texto de la obra 3'),
+    ('Obra 4', '2024-02-10', 3669755, 0, 'Texto de la obra 4'),
+    ('Obra 5', '2023-09-05', 3965874, 1, 'Texto de la obra 5');

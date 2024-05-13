@@ -1,0 +1,9 @@
+al ser usado modificar en sqlserver el user sa y poner contraseña 1234
+dentro de la conecion java modificar el link de conexión del driver por el del equipo a usar
+ejemplo del link completo del driver a poner o modificar:
+jdbc:sqlserver://localhost\\demondcn\\SQLEXPRESS:1433;databaseName=AutoresDba;TrustServerCertificate=True;
+si abstiene errores verifique si le deja entrar al sql server al user sa y si esta activado
+		ver en el siguiente video: https://www.youtube.com/watch?v=yXhjFOvNyR4&t
+una ves eso y si persiste el error modifique la configuración del sql server:
+		ver en el siguiente video:https://www.youtube.com/watch?v=O4bNjAbzJ1A
+una ves eso ya se puede usar sin problemas la aplicacion
